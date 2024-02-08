@@ -1,17 +1,31 @@
-## Foundry
+## Foundry Fund Me
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**Foundry Fund Me is a decentralized crowdfunding platform built using Foundry.**
 
-Foundry consists of:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Installations
+- [git](https://git-scm.com/)
+- [foundry](https://getfoundry.sh/)
+- [Ganache](https://trufflesuite.com/ganache/)
+  - If you want to deploy your smart contract on local chain
 
-## Documentation
+### Dependencies
+- Chainlink Brownie Contracts
+```shell
+$ forge install smartcontractkit/chainlink-brownie-contracts@0.6.1 --no-commit 
+```
 
-https://book.getfoundry.sh/
+- Foundry-DevOps
+```shell
+$ forge install cyfrin/foundry-devops@0.0.11 --no-commit
+```
+
+- Forge-std
+```shell
+$ forge install foundry-rs/forge-std@v1.5.3 --no-commit
+```
+
+
 
 ## Usage
 
@@ -26,41 +40,35 @@ $ forge build
 ```shell
 $ forge test
 ```
+### Deploy
 
-### Format
+- your_private_key: The private key of your account (like from metamask). NOTE: FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
+- your_rpc_url: This is url of the sepolia testnet node you're working with or local anvil or ganache node. You can get setup with one for free from Alchemy.
+
+```shell
+$ forge script script/DeployFundMe.s.sol:FundMe --rpc-url <your_rpc_url> --private-key <your_private_key> --broadcast
+```
+
+## Format
+- to format :
 
 ```shell
 $ forge fmt
 ```
 
-### Gas Snapshots
-
+## Gas Snapshots
+- you'll see an output file called ```.gas-snapshot```
 ```shell
 $ forge snapshot
 ```
 
-### Anvil
+## Anvil
+- to run anvil
 
 ```shell
 $ anvil
 ```
 
-### Deploy
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## Thank You
+Special thanks to [Patrick Collins](https://github.com/PatrickAlphaC) for his invaluable teaching and mentoring.
